@@ -31,19 +31,19 @@
 		FILE *fp;
 
 		if (esnprintf(path, sizeof(path), NET_OPERSTATE, interface) < 0)
-			return NULL;
+			return "󰤭 ";
 		if (!(fp = fopen(path, "r"))) {
 			warn("fopen '%s':", path);
-			return NULL;
+			return "󰤭 ";
 		}
 		p = fgets(status, 5, fp);
 		fclose(fp);
 		if (!p || strcmp(status, "up\n") != 0)
-			return NULL;
+			return "󰤭 ";
 
 		if (!(fp = fopen("/proc/net/wireless", "r"))) {
 			warn("fopen '/proc/net/wireless':");
-			return NULL;
+			return "󰤭 ";
 		}
 
 		for (i = 0; i < 3; i++)
@@ -52,17 +52,31 @@
 
 		fclose(fp);
 		if (i < 2 || !p)
-			return NULL;
+			return "󰤭 ";
 
 		if (!(datastart = strstr(buf, interface)))
-			return NULL;
+			return "󰤭 ";
 
 		datastart = (datastart+(strlen(interface)+1));
 		sscanf(datastart + 1, " %*d   %d  %*d  %*d\t\t  %*d\t   "
 		       "%*d\t\t%*d\t\t %*d\t  %*d\t\t %*d", &cur);
 
 		/* 70 is the max of /proc/net/wireless */
-		return bprintf("%d", (int)((float)cur / 70 * 100));
+
+		int percentage = (int)((float)cur / 70 * 100);
+		const char *icon;
+
+		if (percentage <= 25) {
+		        icon = "󰤟 ";
+		} else if (percentage <= 50) {
+		        icon = "󰤢 ";
+		} else if (percentage <= 75) {
+		        icon = "󰤥 ";
+		} else {
+		        icon = "󰤨 ";
+		}
+
+		return bprintf("%s", icon);
 	}
 
 	const char *
@@ -76,23 +90,23 @@
 		wreq.u.essid.length = IW_ESSID_MAX_SIZE+1;
 		if (esnprintf(wreq.ifr_name, sizeof(wreq.ifr_name), "%s",
 		              interface) < 0)
-			return NULL;
+			return "Not Connected";
 
 		if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
 			warn("socket 'AF_INET':");
-			return NULL;
+			return "Not Connected";
 		}
 		wreq.u.essid.pointer = id;
 		if (ioctl(sockfd,SIOCGIWESSID, &wreq) < 0) {
 			warn("ioctl 'SIOCGIWESSID':");
 			close(sockfd);
-			return NULL;
+			return "Not Connected";
 		}
 
 		close(sockfd);
 
 		if (!strcmp(id, ""))
-			return NULL;
+			return "Not Connected";
 
 		return id;
 	}
