@@ -24,6 +24,16 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+/* If you use amixer, use this instead. Thanks go to DaniOrt3ga. */
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
+
+/* backlight */
+static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "set", "10%-", NULL };
+
 /* tagging */
 static const char *tags[] = { " ", " ", " ", "󰨞 ", " ", " ", "󰉋 ", "󰭹 ", " " };
 
@@ -33,11 +43,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "kitty",   NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class         instance   title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",          NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "brave-browser", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "kitty",         NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,            NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -86,11 +96,18 @@ static const char *dmenucmd[] = { "dmenu_run", "-c", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]  = { "kitty", NULL };
 /* static const char *statuscmd[] = { "slstatus", NULL }; */
 
+#include <X11/XF86keysym.h>
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ 0,			        XF86XK_AudioMute, spawn, {.v = mutecmd } },
+	{ 0,                            XF86XK_AudioMicMute, spawn, {.v = miccmd } },
+	{ 0, 				XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+	{ 0, 				XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+	{ 0, 				XF86XK_MonBrightnessUp, spawn, {.v = brupcmd} },
+	{ 0, 				XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
