@@ -1,0 +1,30 @@
+============= apps ===========
+4k Video Downloader
+btop
+vscode
+mpv
+picom
+spotify
+audacidy
+chromium
+kitty
+alacrity
+brave browser
+clementine
+gimp
+neofetch
+alsa
+alsamixer
+nmcli
+
+========== dependencies ========
+xorg 
+xserver-xorg-video-<gputype>
+xinit
+libxinerama-dev
+libx11-dev
+libxft-dev
+libxrandr-dev
+build-essential
+xserver-xorg-input-all
+xfonts-base
