@@ -16,8 +16,9 @@ neofetch
 alsa
 alsamixer
 nmcli
+dbus
 
-========== dependencies ========
+========== dwm dependencies ========
 xorg 
 xserver-xorg-video-<gputype>
 xinit
@@ -28,3 +29,4 @@ libxrandr-dev
 build-essential
 xserver-xorg-input-all
 xfonts-base
+
