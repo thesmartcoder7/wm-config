@@ -58,7 +58,6 @@ static const char unknown_str[] = "n/a";
  * uid                 UID of current user             NULL
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
- * alsa_master_vol     ALSA Master device volume       NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
  *                                                     NULL on OpenBSD/FreeBSD
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
@@ -73,7 +72,6 @@ static const struct arg args[] = {
 	{ ram_used, "   %s ", NULL },
 	{ wifi_perc, " %s", "wlp0s20f3" },
 	{ wifi_essid, " %s ", "wlp0s20f3" },
-	{ alsa_master_vol, "   %s ", NULL },
+	/*{ run_command, "   %s% ", "amixer sget Master | awk -F'[][]' '/%/ { print $2 }' | head -n1 &" },*/
 	{ battery_perc, " %s ", "BAT0"},
 };
-
