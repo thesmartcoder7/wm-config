@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+# install dwm dependencies
+echo " . . . . . Installing DWM Dependencies . . . . . "
+sudo apt install xorg xinit libxinerama-dev libx11-dev libxft-dev libx11-xcb-dev libxcb-res0-dev libxrandr-dev build-essential xserver-xorg-input-all xfonts-base
+
+# install apps from debian packages
+echo " . . . . . Installing Apps . . . . . "
+sudo apt install wget curl btop mpv picom audacity chromium kitty clementine gimp neofetch alsa-utils pulseaudio pavucontrol dbus
+
+# install third party applications
+# brave browser -----
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] \
+https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+sudo apt install brave-browser
+
+# thorium browser -----
+sudo rm -fv /etc/apt/sources.list.d/thorium.list
+sudo wget --no-hsts -P /etc/apt/sources.list.d/ http://dl.thorium.rocks/debian/dists/stable/thorium.list
+sudo apt update
+sudo apt install thorium-browser
+
+# librewolf browser -----
+sudo apt update && sudo apt install extrepo -y
+sudo extrepo enable librewolf
+sudo apt update && sudo apt install librewolf -y
+
+
