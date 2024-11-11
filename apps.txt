@@ -19,6 +19,7 @@ nmcli
 dbus
 zip
 unzip
+locate
 
 ========== dwm dependencies ========
 xorg 
