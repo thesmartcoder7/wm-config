@@ -17,6 +17,8 @@ alsa
 alsamixer
 nmcli
 dbus
+zip
+unzip
 
 ========== dwm dependencies ========
 xorg 

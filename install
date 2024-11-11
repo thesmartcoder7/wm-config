@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
 # install dwm dependencies
-echo " . . . . . Installing DWM Dependencies . . . . . "
+printf "\n\n . . . . . Installing DWM Dependencies . . . . . \n\n"
 sudo apt install xorg xinit libxinerama-dev libx11-dev libxft-dev libx11-xcb-dev libxcb-res0-dev libxrandr-dev build-essential xserver-xorg-input-all xfonts-base
 
 # install apps from debian packages
-echo " . . . . . Installing Apps . . . . . "
+printf "\n\n . . . . . Installing Apps . . . . . \n\n"
 sudo apt install wget curl btop mpv picom audacity chromium kitty clementine gimp neofetch alsa-utils pulseaudio pavucontrol dbus
 
 # install third party applications
@@ -26,5 +26,4 @@ sudo apt install thorium-browser
 sudo apt update && sudo apt install extrepo -y
 sudo extrepo enable librewolf
 sudo apt update && sudo apt install librewolf -y
-
 
