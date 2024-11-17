@@ -6,7 +6,7 @@ sudo apt install xorg xinit libxinerama-dev libx11-dev libxft-dev libx11-xcb-dev
 
 # install apps from debian packages
 printf "\n\n . . . . . Installing Apps . . . . . \n\n"
-sudo apt install wget curl btop mpv picom audacity chromium kitty clementine gimp neofetch alsa-utils pulseaudio network-manager pavucontrol dbus locate zip unzip
+sudo apt install wget curl btop mpv picom audacity chromium kitty clementine gimp neofetch alsa-utils pulseaudio network-manager pavucontrol dbus locate zip unzip pipenv
 
 # install third party applications
 # brave browser -----
