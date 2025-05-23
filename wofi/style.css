@@ -1,0 +1,43 @@
+* {
+	border: none;
+}
+
+window {
+	background-color: #111111;
+	color: white;
+	border: solid 2px #3d3d3d;
+	padding: 5px;
+}
+
+#entry {
+	padding: 10px;
+}
+
+#entry:selected {
+	background-color: #3d3d3d;
+}
+
+#input {
+	background-color: #3d3d3d;
+	color: white;
+	padding: 5px;
+	border: none;
+	border-radius: 0;
+}
+
+#input:focus {
+	border: none;
+}
+
+#input:hover {
+	border: none;
+}
+
+#input:active {
+	border: none;
+}
+
+
+image {
+	margin: 10px;
+}

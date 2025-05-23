@@ -1,0 +1,9 @@
+mode=drun
+allow_images=true
+width=30%
+image_size=25
+
+[environment]
+GTK_THEME=Materia-dark
+GTK_ICON_THEME=kora-grey
+XCURSOR_THEME=Qogir-Cursors
