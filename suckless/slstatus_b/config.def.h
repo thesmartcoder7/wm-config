@@ -68,10 +68,24 @@ static const char unknown_str[] = "n/a";
 
 static const struct arg args[] = {
 	/* function format          argument */
-	{ datetime, " %s ", "%b %e , %H:%M" },
+	/*{ datetime, " %s ", "%b %e , %H:%M" },*/
+  /*{ datetime, " %s ", "%A - %B %d %Y, %H:%M"},*/
+  { run_command, " %s ",
+    "date +\"%A %B %d\" | awk '"
+    "{"
+    "  d=$NF; "
+    "  sub(/^0/, \"\", d); "
+    "  s=\"th\"; "
+    "  if(d==1||d==21||d==31) s=\"st\"; "
+    "  else if(d==2||d==22) s=\"nd\"; "
+    "  else if(d==3||d==23) s=\"rd\"; "
+    "  printf \"%s - %s %d%s\", $1, $2, d, s"
+    "}'"
+  },
+  { datetime, " %s ", "%Y , %H:%M" }, 
 	{ ram_used, "   %s ", NULL },
-	{ wifi_perc, " %s", "wlp0s20f3" },
-	{ wifi_essid, " %s ", "wlp0s20f3" },
+	/*{ wifi_perc, " %s", "wlp0s20f3" },*/
+	/*{ wifi_essid, " %s ", "wlp0s20f3" },*/
 	/*{ run_command, "   %s% ", "amixer sget Master | awk -F'[][]' '/%/ { print $2 }' | head -n1 &" },*/
-	{ battery_perc, " %s ", "BAT0"},
+	/*{ battery_perc, " %s ", "BAT0"},*/
 };
