@@ -20,6 +20,8 @@ zip                    ---- compression tool
 unzip                  ---- zip file extraction tool
 locate                 ---- finder
 flameshot gui          ---- screenshot application
+ferdium                ---- multichat application ( whatsapp, telegram, slack, discord, emails . . . etc)
+
 
 ========== dwm dependencies ========
 xorg 
