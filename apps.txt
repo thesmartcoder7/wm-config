@@ -1,25 +1,25 @@
 ============= apps ===========
-4k Video Downloader
-btop
-vscode
-mpv
-picom
-spotify
-audacidy
-chromium
-kitty
-alacrity
-brave browser
-clementine
-gimp
-neofetch
-alsa
-alsamixer
-nmcli
-dbus
-zip
-unzip
-locate
+4k Video Downloader    ---- downloading youtube videos
+btop                   ---- classy version of top / htop
+vscode                 ---- development tool
+mpv                    ---- video player
+picom                  ---- compositor
+spotify                ---- audio player
+audacidy               ---- audio recorder / editor 
+chromium               ---- browser
+kitty                  ---- terminal
+brave browser          ---- browser
+clementine             ---- audio player
+gimp                   ---- design tool
+neofetch               ---- system info
+alsa                   ---- audio interface / config ---- arch uses pipewire
+alsamixer              ---- audio interface / config ---- arch uses pipewire
+nmcli                  ---- network manager cli tool 
+dbus                   ---- enables inter-process communication between applications
+zip                    ---- compression tool
+unzip                  ---- zip file extraction tool
+locate                 ---- finder
+flameshot gui          ---- screenshot application
 
 ========== dwm dependencies ========
 xorg 
