@@ -22,6 +22,8 @@ This is an ongoing hobby project messing around with different window managers. 
 
 Feel free to use this as a starting point for your own window manager journey!
 
+***Run this in a VM before bare metal!***
+
 ## 📋 Contents
 
 This configuration includes:
