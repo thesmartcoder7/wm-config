@@ -1,0 +1,149 @@
+#!/usr/bin/bash
+
+# Fedora Installation Script for WM Configuration
+
+# Color codes for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+print_status() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
+
+print_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+# Update system
+print_status "Updating system packages..."
+sudo dnf update -y
+
+# Install DWM dependencies
+print_status "Installing DWM Dependencies..."
+sudo dnf install -y \
+    xorg-x11-server-Xorg \
+    xorg-x11-xinit \
+    xorg-x11-server-devel \
+    libXinerama-devel \
+    libXft-devel \
+    libX11-devel \
+    libXrandr-devel \
+    libxcb-devel \
+    gcc \
+    make \
+    xorg-x11-fonts-misc
+
+# Enable RPM Fusion repositories
+print_status "Enabling RPM Fusion repositories..."
+sudo dnf install -y \
+    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# Install core applications
+print_status "Installing Core Applications..."
+sudo dnf install -y \
+    wget \
+    curl \
+    btop \
+    mpv \
+    picom \
+    audacity \
+    chromium \
+    kitty \
+    clementine \
+    gimp \
+    neofetch \
+    pipewire \
+    pipewire-alsa \
+    pipewire-pulseaudio \
+    pipewire-jack-audio-connection-kit \
+    wireplumber \
+    NetworkManager \
+    pavucontrol \
+    dbus \
+    mlocate \
+    zip \
+    unzip \
+    python3-pipenv \
+    tor \
+    flameshot \
+    feh \
+    discord \
+    telegram-desktop \
+    firefox \
+    libreoffice \
+    obs-studio \
+    vlc
+
+# Install Flatpak
+print_status "Installing Flatpak and Flathub repository..."
+sudo dnf install -y flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Install additional applications via Flatpak
+print_status "Installing additional applications via Flatpak..."
+flatpak install -y flathub \
+    com.brave.Browser \
+    com.vscodium.codium \
+    com.spotify.Client \
+    org.signal.Signal \
+    com.slack.Slack \
+    md.obsidian.Obsidian \
+    com.notion.Notion \
+    org.freedesktop.Piper \
+    com.github.tchx84.Flatseal
+
+# Install additional packages via dnf
+print_status "Installing additional development tools..."
+sudo dnf install -y \
+    git \
+    vim \
+    neovim \
+    htop \
+    tree \
+    nodejs \
+    npm \
+    python3-pip \
+    golang \
+    rust \
+    cargo \
+    cmake \
+    gdb \
+    strace \
+    wireshark \
+    nmap
+
+# Install third party browsers
+print_status "Installing third-party browsers..."
+
+# Brave Browser
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install -y brave-browser
+
+# LibreWolf (via COPR)
+sudo dnf copr enable -y librewolf-community/librewolf
+sudo dnf install -y librewolf
+
+# Enable essential services
+print_status "Enabling essential services..."
+sudo systemctl enable NetworkManager
+sudo systemctl enable pipewire
+sudo systemctl enable pipewire-pulse
+
+# Update locate database
+print_status "Updating locate database..."
+sudo updatedb
+
+print_success "Fedora installation completed!"
+print_warning "Please reboot your system to ensure all services are properly started."
+print_status "After reboot, you can build the suckless tools using the instructions in the README."
+print_status "Some Flatpak applications may require a logout/login to appear in your application menu."
