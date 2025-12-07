@@ -44,10 +44,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class         instance   title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",          NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 	{ "kitty",         NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
   { "Code",          NULL,     NULL,           1 << 3,    0,          0,           0,        -1 },
+  { "mpv",           NULL,     NULL,           1 << 5,    0,          0,           0,        -1 },
+  { "Nemo",          NULL,     NULL,           1 << 6,    0,          0,           0,        -1 },
+  { "Ferdium",       NULL,     NULL,           1 << 7,    0,          0,           0,        -1 },
+  { "Gimp",          NULL,     NULL,           1 << 8,    0,          0,           0,        -1 },
 };
 
 /* layout(s) */
@@ -121,7 +124,7 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
 	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
-	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
+  { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
