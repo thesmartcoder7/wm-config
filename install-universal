@@ -15,7 +15,7 @@ print_header() {
     echo -e "${PURPLE}"
     echo "╔════════════════════════════════════════╗"
     echo "║     Window Manager Configuration       ║"
-    echo "║         Installation Script           ║"
+    echo "║         Installation Script            ║"
     echo "╚════════════════════════════════════════╝"
     echo -e "${NC}"
 }
