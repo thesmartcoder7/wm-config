@@ -18,11 +18,15 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#595959";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
+	//               fg         bg         border   
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
+
+/* Pywal color-scheme config --- activate when pywal is configured well! */
+// #include "/home/samuel/.cache/wal/colors-wal-dwm.h";
 
 /* If you use amixer, use this instead. Thanks go to DaniOrt3ga. */
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
