@@ -11,12 +11,18 @@ static const char *fonts[] = {
 	"JetBrainsMono Nerd Font:size=12", "Font Awesome 5 Free:size=10"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+
+
 static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
+	//                  fg         bg     
 	[SchemeNorm] = { "#bbbbbb", "#222222" },
 	[SchemeSel] = { "#eeeeee", "#005577" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
+
+/* Pywal settings ---- use once pywal is configured correctly */
+// #include "/home/samuel/.cache/wal/colors-wal-dmenu.h"
+
 
 /* -l and -g options; controls number of lines and columns in grid if > 0 */
 static unsigned int lines      = 10;

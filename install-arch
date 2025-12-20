@@ -89,12 +89,8 @@ yay -S --noconfirm \
     thorium-browser-bin \
     librewolf-bin \
     visual-studio-code-bin \
-    spotify \
     4kvideodownloader \
     ferdium-bin \
-    timeshift \
-    stacer \
-    notion-app \
     slack-desktop
 
 # Enable essential services
