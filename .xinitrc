@@ -1,14 +1,13 @@
 # laptop configurations
-./.laptop_config &
+# ./.laptop_config &
 eval $(dbus-launch --sh-syntax --exit-with-session)
 
-
 # set background image
-feh --bg-scale ~/Pictures/light-in-dark.jpg &
+feh --bg-scale ~/.config/wm-config/wallpapers/arch/arch-dirty-darker.png &
 
 # terminal transparency
 if ! ps aux | grep -v grep | grep picom > /dev/null; then
-	nohup picom > /dev/null 2>&1 &
+	nohup picom -b --config .config/picom/picom.conf > /dev/null 2>&1 &
 fi
 
 # start slstatus ( quick fix )
