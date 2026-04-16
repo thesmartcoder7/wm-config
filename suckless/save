@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # remove backups
-rm -rf dwm_b
-rm -rf dmenu_b
-rm -rf slstatus_b
+rm -rf dwm_backup
+rm -rf dmenu_backup
+rm -rf slstatus_backup
 
 # create backups
-cp -r dwm dwm_b
-cp -r dmenu dmenu_b
-cp -r slstatus slstatus_b
+cp -r dwm dwm_backup
+cp -r dmenu dmenu_backup
+cp -r slstatus slstatus_backup
+

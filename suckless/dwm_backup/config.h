@@ -29,10 +29,21 @@ static const char *colors[][3]      = {
 // #include "/home/samuel/.cache/wal/colors-wal-dwm.h";
 
 /* If you use amixer, use this instead. Thanks go to DaniOrt3ga. */
-static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
+
+/* 
+ *
+ * static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+ * static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+ * static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+ * static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL }; 
+ *
+*/
+
+/* PipeWire volume control */
+static const char *mutecmd[]   = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
+static const char *volupcmd[]  = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
+static const char *voldowncmd[]= { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-", NULL };
+static const char *miccmd[]    = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SOURCE@", "toggle", NULL };
 
 /* Backlight for anything that uses the F1 - F12 keys */
 static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
@@ -54,6 +65,7 @@ static const Rule rules[] = {
   { "mpv",           NULL,     NULL,           1 << 5,    0,          0,           0,        -1 },
   { "Nemo",          NULL,     NULL,           1 << 6,    0,          0,           0,        -1 },
   { "Ferdium",       NULL,     NULL,           1 << 7,    0,          0,           0,        -1 },
+  { "Slack",         NULL,     NULL,           1 << 7,    0,          0,           0,        -1 },
   { "Gimp",          NULL,     NULL,           1 << 8,    0,          0,           0,        -1 },
 };
 
@@ -69,9 +81,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+	{ "[@]",      spiral }, /* first entry is default */
+	{ "[]=",      tile },
 	{ "[M]",      monocle },
-	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
 	{ "H[]",      deck },
 	{ "TTT",      bstack },
@@ -114,7 +126,9 @@ static const Key keys[] = {
 	{ 0,			                      XF86XK_AudioMute, spawn,   {.v = mutecmd } },
 	{ 0,                            XF86XK_AudioMicMute, spawn, {.v = miccmd } },
 	{ 0, 				                    XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+  { MODKEY|ShiftMask,             XK_Down,                 spawn, {.v = voldowncmd } },
 	{ 0, 				                    XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+  { MODKEY|ShiftMask,             XK_Up,                   spawn, {.v = volupcmd } },
 	{ 0, 			                    	XF86XK_MonBrightnessUp, spawn, {.v = brupcmd} },
 	{ 0, 			                    	XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
