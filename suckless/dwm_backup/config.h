@@ -39,6 +39,19 @@ static const char *colors[][3]      = {
  *
 */
 
+/* Custom Scripts */
+static const char *powercmd[] = { "/bin/sh", "-c", 
+    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/power", NULL };
+
+static const char *mountcmd[] = { "/bin/sh", "-c", 
+    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/drive-mount", NULL };
+
+static const char *networkcmd[] = { "/bin/sh", "-c", 
+    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/network-connect", NULL };
+
+static const char *killcmd[] = { "/bin/sh", "-c", 
+    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/kill-processes", NULL };
+
 /* PipeWire volume control */
 static const char *mutecmd[]   = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
 static const char *volupcmd[]  = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
@@ -173,6 +186,14 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+  
+  /* ==================== custom scripts bindings ==================== */
+  { MODKEY|ShiftMask,     XK_p,      spawn, {.v = powercmd } },
+  { MODKEY|ShiftMask,     XK_m,      spawn, {.v = mountcmd } },
+  { MODKEY|ShiftMask,     XK_n,      spawn, {.v = networkcmd } },
+  { MODKEY|ShiftMask,     XK_k,      spawn, {.v = killcmd } },
+
+  /* ====================          Tag keys       =====================*/
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -182,6 +203,9 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+
+
+  /* ====================          Quit       =====================*/
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
