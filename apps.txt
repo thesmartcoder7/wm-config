@@ -50,7 +50,7 @@ obs-studio             ---- Screen recording and live streaming
 4k-video-downloader    ---- YouTube video downloader
 
 ============= System & Network =========
-network-manager/nmcli  ---- Network management
+networkmanager         ---- Network management
 pavucontrol            ---- PulseAudio volume control
 dbus                   ---- Inter-process communication system
 zip/unzip              ---- Compression utilities
@@ -117,3 +117,7 @@ redshift               ---- Blue light filter
 dunst                  ---- Notification daemon
 rofi                   ---- Application launcher (alternative to dmenu)
 
+
+============ Notification ==============
+dunst                  ---- Notification daemon
+libnotify              ---- Desktop notification
