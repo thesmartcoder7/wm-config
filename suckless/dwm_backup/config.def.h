@@ -39,18 +39,14 @@ static const char *colors[][3]      = {
  *
 */
 
-/* Custom Scripts */
-static const char *powercmd[] = { "/bin/sh", "-c", 
-    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/power", NULL };
+/* =================== Edit this path to match where your scripts are ======================== */
+#define SCRIPT(cmd) "/bin/sh", "-c", "$HOME/.config/wm-config/suckless/dmenu/scripts/" cmd
 
-static const char *mountcmd[] = { "/bin/sh", "-c", 
-    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/drive-mount", NULL };
-
-static const char *networkcmd[] = { "/bin/sh", "-c", 
-    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/network-connect", NULL };
-
-static const char *killcmd[] = { "/bin/sh", "-c", 
-    "/home/samuel/.config/wm-config/suckless/dmenu/scripts/kill-processes", NULL };
+/* Custom dmenu scripts */
+static const char *powercmd[]   = { SCRIPT("power"), NULL };
+static const char *mountcmd[]   = { SCRIPT("drive-mount"), NULL };
+static const char *networkcmd[] = { SCRIPT("network-connect"), NULL };
+static const char *killcmd[]    = { SCRIPT("kill-processes"), NULL };
 
 /* PipeWire volume control */
 static const char *mutecmd[]   = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
