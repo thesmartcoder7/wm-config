@@ -47,6 +47,8 @@ static const char *powercmd[]   = { SCRIPT("power"), NULL };
 static const char *mountcmd[]   = { SCRIPT("drive-mount"), NULL };
 static const char *networkcmd[] = { SCRIPT("network-connect"), NULL };
 static const char *killcmd[]    = { SCRIPT("kill-processes"), NULL };
+static const char *bluetooth[]  = { SCRIPT("bluetooth"), NULL };
+ 
 
 /* PipeWire volume control */
 static const char *mutecmd[]   = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
@@ -188,6 +190,7 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,     XK_m,      spawn, {.v = mountcmd } },
   { MODKEY|ShiftMask,     XK_n,      spawn, {.v = networkcmd } },
   { MODKEY|ShiftMask,     XK_k,      spawn, {.v = killcmd } },
+  { MODKEY|ShiftMask,     XK_b,      spawn, {.v = bluetooth} },
 
   /* ====================          Tag keys       =====================*/
 	TAGKEYS(                        XK_1,                      0)
