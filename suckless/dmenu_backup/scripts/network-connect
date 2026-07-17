@@ -56,7 +56,7 @@ wifi_state=$(nmcli radio wifi)
 eth_dev=$(nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="ethernet" {print $1; exit}')
 eth_state=$( [ -n "$eth_dev" ] && nmcli -t -f STATE device | grep "^${eth_dev}:" | cut -d: -f2 || echo "Unavailable" )
 
-menu="WiFi: ${wifi_state}\nEthernet: ${eth_state}\nScan for WiFi networks\n"
+menu="WiFi: ${wifi_state}\nEthernet: ${eth_state}\n>>> Scan for WiFi networks <<<\n"
 
 # Saved connections
 saved=$(nmcli -t -f NAME,TYPE connection show 2>/dev/null | \
@@ -80,7 +80,7 @@ case "$choice" in
         toggle_ethernet
         ;;
 
-    *"Scan for WiFi networks"*)
+    *">>> Scan for WiFi networks <<<"*)
         # Turn WiFi on if needed
         if [ "$(nmcli radio wifi)" = "disabled" ]; then
             nmcli radio wifi on
