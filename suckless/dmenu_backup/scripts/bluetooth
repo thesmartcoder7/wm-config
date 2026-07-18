@@ -24,7 +24,7 @@ initialize_bluetooth() {
     bluetoothctl agent on >/dev/null 2>&1
     bluetoothctl default-agent >/dev/null 2>&1
     bluetoothctl power on >/dev/null 2>&1
-    sleep 1.5
+    sleep 0.5
 }
 
 toggle_power() {
@@ -39,7 +39,7 @@ toggle_power() {
 scan_connect() {
     initialize_bluetooth
     notify "Scanning for nearby devices..."
-    bluetoothctl --timeout 12 scan on >/dev/null 2>&1
+    bluetoothctl --timeout 3 scan on >/dev/null 2>&1
 
     devices=$(bluetoothctl devices 2>/dev/null)
     [ -z "$devices" ] && { notify "No devices found."; exit 1; }
