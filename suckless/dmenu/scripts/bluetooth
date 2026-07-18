@@ -17,7 +17,7 @@ dmenu_cmd() {
 }
 
 notify() {
-    notify-send -t 5000 "Bluetooth" "$1"
+    notify-send -t 3000 "Bluetooth" "$1"
 }
 
 initialize_bluetooth() {
@@ -39,7 +39,7 @@ toggle_power() {
 scan_connect() {
     initialize_bluetooth
     notify "Scanning for nearby devices..."
-    bluetoothctl --timeout 6 scan on >/dev/null 2>&1
+    bluetoothctl --timeout 3 scan on >/dev/null 2>&1
 
     devices=$(bluetoothctl devices 2>/dev/null)
     [ -z "$devices" ] && { notify "No devices found."; exit 1; }
