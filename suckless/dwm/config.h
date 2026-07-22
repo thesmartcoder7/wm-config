@@ -43,11 +43,11 @@ static const char *colors[][3]      = {
 #define SCRIPT(cmd) "/bin/sh", "-c", "$HOME/.config/wm-config/suckless/dmenu/scripts/" cmd
 
 /* Custom dmenu scripts */
-static const char *powercmd[]   = { SCRIPT("power"), NULL };
-static const char *mountcmd[]   = { SCRIPT("drive-mount"), NULL };
+static const char *powercmd[]   = { SCRIPT("power"),           NULL };
+static const char *mountcmd[]   = { SCRIPT("drive-mount"),     NULL };
 static const char *networkcmd[] = { SCRIPT("network-connect"), NULL };
-static const char *killcmd[]    = { SCRIPT("kill-processes"), NULL };
-static const char *bluetooth[]  = { SCRIPT("bluetooth"), NULL };
+static const char *killcmd[]    = { SCRIPT("kill-processes"),  NULL };
+static const char *bluetooth[]  = { SCRIPT("bluetooth"),       NULL };
  
 
 /* PipeWire volume control */
@@ -191,7 +191,7 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,     XK_m,      spawn, {.v = mountcmd } },
   { MODKEY|ShiftMask,     XK_n,      spawn, {.v = networkcmd } },
   { MODKEY|ShiftMask,     XK_k,      spawn, {.v = killcmd } },
-  { MODKEY|ShiftMask,     XK_b,      spawn, {.v = bluetooth} },
+  { MODKEY|ShiftMask,     XK_b,      spawn, {.v = bluetooth } },
 
   /* ====================          Tag keys       =====================*/
 	TAGKEYS(                        XK_1,                      0)
